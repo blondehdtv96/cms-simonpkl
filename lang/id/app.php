@@ -6,6 +6,7 @@ return [
         'login' => 'Masuk',
         'register' => 'Daftar',
         'email' => 'Email',
+        'username' => 'Username',
         'password' => 'Kata Sandi',
         'password_confirmation' => 'Konfirmasi Kata Sandi',
         'name' => 'Nama',
@@ -77,6 +78,7 @@ return [
     'placeholder' => [
         'search' => 'Cari...',
         'email' => 'email@email.com',
+        'username' => 'username',
         'password' => '********',
         'password_confirmation' => '********',
         'name' => 'Nama',

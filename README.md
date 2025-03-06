@@ -32,8 +32,8 @@
 - Apache
 # Installation
 ``` bash
-git clone https://github.com/erikwibowo/Laravel-Brive.git
-cd Laravel-Brive
+git clone https://github.com/blondehdtv96/cms-simonpkl.git
+cd simon-pkl
 composer update
 npm install
 cp .env.example .env
@@ -43,7 +43,7 @@ SETTING UP DB CONNECTION IN .env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=brive
+DB_DATABASE=simonpkl
 DB_USERNAME=root
 DB_PASSWORD=
 

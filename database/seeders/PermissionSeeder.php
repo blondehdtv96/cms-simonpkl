@@ -29,5 +29,13 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'update permission']);
         Permission::create(['name' => 'read permission']);
         Permission::create(['name' => 'create permission']);
+
+        // PKL Permissions
+        Permission::create(['name' => 'create pkl']);
+        Permission::create(['name' => 'read pkl']);
+        Permission::create(['name' => 'update pkl']);
+        Permission::create(['name' => 'delete pkl']);
+        Permission::create(['name' => 'approve pkl']);
+        Permission::create(['name' => 'reject pkl']);
     }
 }

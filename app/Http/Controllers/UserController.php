@@ -36,6 +36,7 @@ class UserController extends Controller
         if ($request->has('search')) {
             $users->where('name', 'LIKE', "%" . $request->search . "%");
             $users->orWhere('email', 'LIKE', "%" . $request->search . "%");
+            $users->orWhere('username', 'LIKE', "%" . $request->search . "%");
         }
         if ($request->has(['field', 'order'])) {
             $users->orderBy($request->field, $request->order);
@@ -81,6 +82,7 @@ class UserController extends Controller
         try {
             $user = User::create([
                 'name' => $request->name,
+                'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
@@ -129,6 +131,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->update([
                 'name'      => $request->name,
+                'username'  => $request->username,
                 'email'     => $request->email,
                 'password'  => $request->password ? Hash::make($request->password) : $user->password,
             ]);

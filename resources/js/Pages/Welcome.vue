@@ -104,21 +104,6 @@ defineProps({
                 <div
                     class="flex mx-4 sm:mx-0 flex-row justify-center text-center"
                 >
-                    <p>
-                        <a
-                            href="https://brive.erikwibowo.com"
-                            target="_blank"
-                            >{{ $page.props.app.name }}</a
-                        >
-                        ©️
-                        {{ new Date().getFullYear() }}
-                        <a
-                            href="https://github.com/erikwibowo"
-                            target="_blank"
-                            class="text-primary"
-                            >Erik Wibowo</a
-                        >
-                    </p>
                 </div>
                 <div class="flex mx-4 sm:mx-0 justify-center text-center">
                     Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})

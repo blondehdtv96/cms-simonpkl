@@ -11,6 +11,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +25,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
@@ -50,14 +46,20 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('/user', UserController::class)->except('create', 'show', 'edit');
-    Route::post('/user/destroy-bulk', [UserController::class, 'destroyBulk'])->name('user.destroy-bulk');
-    
-    Route::resource('/role', RoleController::class)->except('create', 'show', 'edit');
-    Route::post('/role/destroy-bulk', [RoleController::class, 'destroyBulk'])->name('role.destroy-bulk');
+    // Student Routes
+    Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 
-    Route::resource('/permission', PermissionController::class)->except('create', 'show', 'edit');
-    Route::post('/permission/destroy-bulk', [PermissionController::class, 'destroyBulk'])->name('permission.destroy-bulk');
+    // Admin Routes
+    Route::middleware(['role:admin,superadmin'])->group(function () {
+        Route::resource('/user', UserController::class)->except('create', 'show', 'edit');
+        Route::post('/user/destroy-bulk', [UserController::class, 'destroyBulk'])->name('user.destroy-bulk');
+        
+        Route::resource('/role', RoleController::class)->except('create', 'show', 'edit');
+        Route::post('/role/destroy-bulk', [RoleController::class, 'destroyBulk'])->name('role.destroy-bulk');
+
+        Route::resource('/permission', PermissionController::class)->except('create', 'show', 'edit');
+        Route::post('/permission/destroy-bulk', [PermissionController::class, 'destroyBulk'])->name('permission.destroy-bulk');
+    });
 });
 
 require __DIR__.'/auth.php';

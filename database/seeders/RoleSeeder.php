@@ -30,7 +30,13 @@ class RoleSeeder extends Seeder
             'delete permission',
             'update permission',
             'read permission',
-            'create permission'
+            'create permission',
+            'create pkl',
+            'read pkl',
+            'update pkl',
+            'delete pkl',
+            'approve pkl',
+            'reject pkl'
         ]);
         $admin = Role::create([
             'name'          => 'admin'
@@ -42,6 +48,9 @@ class RoleSeeder extends Seeder
             'create user',
             'read role',
             'read permission',
+            'read pkl',
+            'approve pkl',
+            'reject pkl'
         ]);
         $operator = Role::create([
             'name'          => 'operator'
@@ -52,6 +61,20 @@ class RoleSeeder extends Seeder
             'create user',
             'read role',
             'read permission',
+            'create pkl',
+            'read pkl',
+            'update pkl'
+        ]);
+
+        // Add student role
+        $student = Role::create([
+            'name'          => 'student'
+        ]);
+        
+        $student->givePermissionTo([
+            'create pkl',
+            'read pkl',
+            'update pkl'
         ]);
     }
 }

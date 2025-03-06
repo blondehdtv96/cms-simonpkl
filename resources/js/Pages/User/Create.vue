@@ -19,6 +19,7 @@ const emit = defineEmits(["close"]);
 
 const form = useForm({
     name: "",
+    username: "",
     email: "",
     password: "",
     password_confirmation: "",
@@ -71,6 +72,19 @@ const roles = props.roles?.map((role) => ({
                             :error="form.errors.name"
                         />
                         <InputError class="mt-2" :message="form.errors.name" />
+                    </div>
+                    <div>
+                        <InputLabel for="username" :value="lang().label.username" />
+                        <TextInput
+                            id="username"
+                            type="text"
+                            class="mt-1 block w-full"
+                            v-model="form.username"
+                            required
+                            :placeholder="lang().placeholder.username"
+                            :error="form.errors.username"
+                        />
+                        <InputError class="mt-2" :message="form.errors.username" />
                     </div>
                     <div>
                         <InputLabel for="email" :value="lang().label.email" />
