@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
         ]);
         $operator->assignRole('operator');
 
-        // Add sample student
+        // Add sample siswa
         $student = User::create([
             'name'              => 'Student',
             'username'          => 'student',

@@ -9,11 +9,14 @@ class StudentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'role:student']);
+        $this->middleware(['auth', 'role:siswa']);
     }
 
     public function dashboard()
     {
-        return Inertia::render('Student/Dashboard');
+        return Inertia::render('Student/Dashboard', [
+            'title' => 'Dashboard Siswa',
+            'breadcrumbs' => [['label' => 'Dashboard', 'href' => route('student.dashboard')]],
+        ]);
     }
 } 

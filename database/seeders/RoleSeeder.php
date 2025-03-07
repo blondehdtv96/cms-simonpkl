@@ -68,13 +68,44 @@ class RoleSeeder extends Seeder
 
         // Add student role
         $student = Role::create([
-            'name'          => 'student'
+            'name'          => 'siswa'
         ]);
         
         $student->givePermissionTo([
             'create pkl',
             'read pkl',
             'update pkl'
+        ]);
+
+        // Add wali kelas role
+        $waliKelas = Role::create([
+            'name'          => 'wali_kelas'
+        ]);
+        
+        $waliKelas->givePermissionTo([
+            'read pkl',
+            'approve pkl'
+        ]);
+
+        // Add kaprog role
+        $kaprog = Role::create([
+            'name'          => 'kaprog'
+        ]);
+        
+        $kaprog->givePermissionTo([
+            'read pkl',
+            'approve pkl'
+        ]);
+
+        // Add hubin role
+        $hubin = Role::create([
+            'name'          => 'hubin'
+        ]);
+        
+        $hubin->givePermissionTo([
+            'read pkl',
+            'approve pkl',
+            'reject pkl'
         ]);
     }
 }
